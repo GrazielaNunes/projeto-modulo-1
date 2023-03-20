@@ -5,10 +5,10 @@ export default function PesquisaProdutos({produtos, itensDoPedido, fcAtualizarIt
 
   const codigoProdutoRef = useRef();
   const quantidadeRef = useRef();
-  const [listaDeItensDoPedido, setListaDeItensDoPedido ]  = useState(itensDoPedido)
+  const [listaDeItensDoPedido, setListaDeItensDoPedido ]  = useState(itensDoPedido);
 
   useEffect(() => {
-    setListaDeItensDoPedido(itensDoPedido)
+    setListaDeItensDoPedido(itensDoPedido);
   }, [itensDoPedido])
 
   function adicionar() {
@@ -17,14 +17,24 @@ export default function PesquisaProdutos({produtos, itensDoPedido, fcAtualizarIt
     const produtoSelecionado = produtos.find(produto => produto.codigo == codigo);
     if(produtoSelecionado === undefined){
       alert("Produto inexistente!")
+      return;
+    } 
+
+    if (itemNoCarrinho(produtoSelecionado)) {
+      alert("Produto só pode ser incluído no carrinho uma única vez.")
+    } else{
+      var novoProduto = {produto:produtoSelecionado, quantidade: quantidade, op:'+', mostraNoCarrinho:true}
+      var itensDoPedidoAtualizado =[...itensDoPedido, novoProduto]
+      fcAtualizarItensDoPedido(itensDoPedidoAtualizado)
     }
-    var novoProduto = {produto:produtoSelecionado, quantidade: quantidade, op:'+' }
-    var itensDoPedidoAtualizado =[...itensDoPedido, novoProduto]
-    fcAtualizarItensDoPedido(itensDoPedidoAtualizado)
+  }
+
+  function itemNoCarrinho(produtoSelecionado) {
+    return listaDeItensDoPedido.some(item => item.produto.codigo == produtoSelecionado.codigo); 
   }
   
   return (
-        <div class="produtos">
+        <div class='produto-pesquisado'>
         <div>
         <h1>Pesquisa Produtos</h1>
         </div>

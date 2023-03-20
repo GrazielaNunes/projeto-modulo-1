@@ -6,17 +6,21 @@ export default function Cupom({itensDoPedido}) {
 
   const [listaDeItensDoPedido, setListaDeItensDoPedido ]  = useState(itensDoPedido)
 
-  function calculaValorTotal() {
-    var valorTotal = 0;
-    listaDeItensDoPedido.forEach(element => {
-      valorTotal += element.produto.preco * element.quantidade;
-    });
-    return valorTotal.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-  }
-
   useEffect(() => {
     setListaDeItensDoPedido(itensDoPedido)
   }, [itensDoPedido])
+
+  function calculaValorTotal() {
+    var valorTotal = 0;
+    listaDeItensDoPedido.forEach(element => {
+      if(element.op === '+'){
+        valorTotal += (element.produto.preco * element.quantidade);
+      }else{
+        valorTotal -= (element.produto.preco * element.quantidade);
+      }
+    });
+    return valorTotal.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+  }
 
   return (
         <div class="cupom">

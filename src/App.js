@@ -3,17 +3,14 @@ import ListaProdutos from './components/ListaProdutos';
 import PesquisaProdutos from './components/PesquisaProdutos';
 import Carrinho from './components/Carrinho';
 import Cupom from './components/Cupom';
-
-
-import './App.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import './App.css';
 
 export function App() {
 
   const [produtos, setProdutos] = useState([]);
   const [itensPedido, setItensPedido] = useState([]);
-  console.log('tela principalo : ', itensPedido)
 
   useEffect(() => {  
     axios.get('produtos.json')   

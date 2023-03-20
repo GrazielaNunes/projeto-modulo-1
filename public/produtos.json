@@ -14,5 +14,5 @@
 	{ "codigo": 1013, "descricao": "Fogão", "marca": "ACME", "preco": 504.00, "imagem": "" },
 	{ "codigo": 1014, "descricao": "Copo de Vidro", "marca": "Glass", "preco": 12.00, "imagem": "" },
 	{ "codigo": 1015, "descricao": "Ampulheta", "marca": "Hour", "preco": 55.00, "imagem": "" },
-	{ "codigo": 1016, "descricao": "Travesseiro", "marca": "Nuvem", "preco": 23.00, "imagem": "" }
+	{ "codigo": 1016, "descricao": "Travesseiro", "marca": "Nuvem", "preco": 23.00, "imagem": "teste" }
 ]
