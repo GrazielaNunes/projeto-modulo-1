@@ -7,7 +7,7 @@ export default function BlocoCupom( { prod } ) {
   }
 
   return (
-    <tr>
+    <tr >
         <th>{prod.op}</th>
         <th>{prod.produto.codigo}</th>
         <th>{prod.produto.descricao}</th>

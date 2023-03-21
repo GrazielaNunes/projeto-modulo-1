@@ -1,0 +1,17 @@
+button {
+    width: 150px;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 5px;
+    margin: 10px 0px;
+}
+
+.produto-info-marca{
+    margin: 10px 0px;
+
+}
+
+.produto-foto{
+    width: 180px;
+    height: 180px;
+}

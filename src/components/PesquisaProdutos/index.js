@@ -23,8 +23,8 @@ export default function PesquisaProdutos({produtos, itensDoPedido, fcAtualizarIt
     if (itemNoCarrinho(produtoSelecionado)) {
       alert("Produto só pode ser incluído no carrinho uma única vez.")
     } else{
-      var novoProduto = {produto:produtoSelecionado, quantidade: quantidade, op:'+', mostraNoCarrinho:true}
-      var itensDoPedidoAtualizado =[...itensDoPedido, novoProduto]
+      let novoProduto = {produto:produtoSelecionado, quantidade: quantidade, op:'+', mostraNoCarrinho:true}
+      let itensDoPedidoAtualizado =[...itensDoPedido, novoProduto]
       fcAtualizarItensDoPedido(itensDoPedidoAtualizado)
     }
   }
@@ -35,14 +35,18 @@ export default function PesquisaProdutos({produtos, itensDoPedido, fcAtualizarIt
   
   return (
         <div class='produto-pesquisado'>
-        <div>
-        <h1>Pesquisa Produtos</h1>
-        </div>
+          <div>
+          <h1>Pesquisa Produtos</h1>
+          </div>
+          <div>
             <span>Código do Produto</span>
             <input type='text' ref={codigoProdutoRef} />
             <span>Quantidade</span>
             <input type='number' min="0" max="99" ref={quantidadeRef}/>
+          </div>
+          <div>
             <button onClick={adicionar}>Adicionar</button>
+          </div>            
         </div>        
   )
 }

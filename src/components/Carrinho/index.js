@@ -20,19 +20,21 @@ export default function Carrinho({itensDoPedido, fcAtualizarItensDoPedido}) {
 
   function excluirProduto(item) {
     item.mostraNoCarrinho = false;
-    var novoProdutoExcluido = {produto:item.produto, quantidade: item.quantidade, op:'-', mostraNoCarrinho:false}
-    var itensDoPedidoAtualizado = [...itensDoPedido, novoProdutoExcluido]
+    let novoProdutoExcluido = {produto:item.produto, quantidade: item.quantidade, op:'-', mostraNoCarrinho:false}
+    let itensDoPedidoAtualizado = [...itensDoPedido, novoProdutoExcluido]
     fcAtualizarItensDoPedido(itensDoPedidoAtualizado)
   }
 
   return (
         <div class="carrinho">
           <div>
-          <h1>Carrinho de Compras</h1>
+            <h1>Carrinho de Compras</h1>
           </div>
-          {
-            filtrarItensParaCarrinho(listaDeItensDoPedido).map(item => <BlocoCarrinho key={item.produto.codigo} item={item} fcExcluirProduto={excluirProduto} />)
-         }
+          <div className="container">
+            {
+              filtrarItensParaCarrinho(listaDeItensDoPedido).map(item => <BlocoCarrinho key={item.produto.codigo} item={item} fcExcluirProduto={excluirProduto} />)
+            }
+          </div>
       </div>        
   )
 }

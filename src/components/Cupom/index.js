@@ -11,12 +11,12 @@ export default function Cupom({itensDoPedido}) {
   }, [itensDoPedido])
 
   function calculaValorTotal() {
-    var valorTotal = 0;
-    listaDeItensDoPedido.forEach(element => {
-      if(element.op === '+'){
-        valorTotal += (element.produto.preco * element.quantidade);
+    let valorTotal = 0;
+    listaDeItensDoPedido.forEach(elemento => {
+      if(elemento.op === '+'){
+        valorTotal += (elemento.produto.preco * elemento.quantidade);
       }else{
-        valorTotal -= (element.produto.preco * element.quantidade);
+        valorTotal -= (elemento.produto.preco * elemento.quantidade);
       }
     });
     return valorTotal.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
@@ -28,29 +28,27 @@ export default function Cupom({itensDoPedido}) {
             <h1>Cupom Fiscal</h1>
           </div>
           <table>
-          <thead>
-          <tr>
-            <th>op</th>
-            <th>cod</th>
-            <th>produto</th>
-            <th>preço unit</th>
-            <th>qtd</th>
-            <th>preço</th>
-          </tr>
-          </thead>
-          <tbody>
-          {
-        
-            listaDeItensDoPedido.map(prod => <BlocoCupom key={prod.produto.codigo} prod={prod} />)
-            
-        }
-          </tbody>
-          <tfoot>
-          <tr>
-          <th>Total:{calculaValorTotal()}</th>
-          </tr>
-          </tfoot>
-        </table>
+            <thead>
+              <tr>
+                <th>op</th>
+                <th>cod</th>
+                <th>produto</th>
+                <th>preço unit</th>
+                <th>qtd</th>
+                <th>preço</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+               listaDeItensDoPedido.map(prod => <BlocoCupom key={prod.produto.codigo} prod={prod} />)
+              }
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>Total:{calculaValorTotal()}</th>
+              </tr>
+            </tfoot>
+          </table>
         </div>          
   )
 }
