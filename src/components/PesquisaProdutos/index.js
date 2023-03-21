@@ -15,20 +15,20 @@ export default function PesquisaProdutos({produtos, itensDoPedido, fcAtualizarIt
     const codigo = codigoProdutoRef.current.value;
     const quantidade = quantidadeRef.current.value;
     const produtoSelecionado = produtos.find(produto => produto.codigo == codigo);
+    
     if(produtoSelecionado === undefined){
       alert("Produto inexistente!")
-      return;
-    } 
-
-    if (itemNoCarrinho(produtoSelecionado)) {
+    } else if (itemNoCarrinho(produtoSelecionado)) {
       alert("Produto só pode ser incluído no carrinho uma única vez.")
     } else{
       let novoProduto = {produto:produtoSelecionado, quantidade: quantidade, op:'+', mostraNoCarrinho:true}
       let itensDoPedidoAtualizado =[...itensDoPedido, novoProduto]
       fcAtualizarItensDoPedido(itensDoPedidoAtualizado)
     }
+    codigoProdutoRef.current.value = "";
+    quantidadeRef.current.value= 0;
   }
-
+  
   function itemNoCarrinho(produtoSelecionado) {
     return listaDeItensDoPedido.some(item => item.produto.codigo == produtoSelecionado.codigo); 
   }
