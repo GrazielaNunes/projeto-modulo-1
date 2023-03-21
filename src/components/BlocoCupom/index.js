@@ -7,7 +7,7 @@ export default function BlocoCupom( { prod } ) {
   }
 
   return (
-    <tr >
+    <tr style={{ color: prod.op  === '-' ? 'red': 'black'}}>
         <th>{prod.op}</th>
         <th>{prod.produto.codigo}</th>
         <th>{prod.produto.descricao}</th>

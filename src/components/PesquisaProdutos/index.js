@@ -18,6 +18,8 @@ export default function PesquisaProdutos({produtos, itensDoPedido, fcAtualizarIt
     
     if(produtoSelecionado === undefined){
       alert("Produto inexistente!")
+    } else if (quantidade == 0){
+      alert("Informe a quantidade!")
     } else if (itemNoCarrinho(produtoSelecionado)) {
       alert("Produto só pode ser incluído no carrinho uma única vez.")
     } else{
@@ -26,7 +28,7 @@ export default function PesquisaProdutos({produtos, itensDoPedido, fcAtualizarIt
       fcAtualizarItensDoPedido(itensDoPedidoAtualizado)
     }
     codigoProdutoRef.current.value = "";
-    quantidadeRef.current.value= 0;
+    quantidadeRef.current.value= "";
   }
   
   function itemNoCarrinho(produtoSelecionado) {
